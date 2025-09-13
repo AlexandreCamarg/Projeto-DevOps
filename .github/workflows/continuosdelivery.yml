@@ -1,4 +1,5 @@
-name: Continuos Delivery
+name: Continuous Delivery
+
 on:
   pull_request:
     branches:
@@ -8,24 +9,25 @@ jobs:
   delivery:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
 
-    - name: Check out repository code
-      uses: actions/checkout@v4
-
-    - name: Simulando continuous Delivery
-      uses: actions/upload-artifact@v4
-      with:
-        name: projetozipado.zip
-        path: |
-          '**.py'
-          README.md
+      - name: Simulando continuous Delivery
+        uses: actions/upload-artifact@v4
+        with:
+          name: projetozipado
+          path: |
+            **.py
+            README.md
 
   deploy:
     runs-on: ubuntu-latest
     needs: delivery
     steps:
-      - uses: actions/dowload-artifact@v4
+      - name: Baixar artefato gerado
+        uses: actions/download-artifact@v4
         with:
-          name: projetozipado.zip
-      - name: Display structure pf dowload files
+          name: projetozipado
+
+      - name: Exibir estrutura dos arquivos baixados
         run: ls -R
