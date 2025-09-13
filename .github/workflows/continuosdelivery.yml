@@ -19,4 +19,13 @@ jobs:
         path: |
           '**.py'
           README.md
-          
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: delivery
+    steps:
+      - uses: actions/dowload-artifact@v4
+        with:
+          name: projetozipado.zip
+      - name: Display structure pf dowload files
+        run: ls -R
