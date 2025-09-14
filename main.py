@@ -1,14 +1,18 @@
 from fastapi import FastAPI
-import random
 
 app = FastAPI()
 
-# http://127.0.0.1:8000/
+# http://127.0.0.1:8000
 @app.get("/")
-async def root():
+def root():
+    return {"message": "API rodando com sucesso 🚀"}
+
+# http://127.0.0.1:8000/helloworld
+@app.get("/helloworld")
+def hello_world():
     return {"message": "Hello World"}
 
-# http://127.0.0.1:8000/teste
-@app.get("/teste")
-async def funcaoteste():
-    return {"teste": "ok", "num_aleatorio": random.randint(0, 20000)}
+# http://127.0.0.1:8000/funcaoteste
+@app.get("/funcaoteste")
+def funcao_teste():
+    return {"message": "Função de teste funcionando"}
