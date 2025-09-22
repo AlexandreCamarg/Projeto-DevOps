@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: false
+          push: false          # coloque true se quiser enviar a imagem para um registry
           tags: user/app:latest
 
   discord:
@@ -46,3 +46,8 @@ jobs:
         uses: Sniddl/discord-commits@v1.6
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+  #on:
+   # pull_request:
+    #  branches: [ main ]
+    #push:
+     # branches: [ main ]
