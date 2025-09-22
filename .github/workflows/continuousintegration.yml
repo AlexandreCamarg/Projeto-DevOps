@@ -4,6 +4,10 @@ on:
   pull_request:
     branches:
       - main
+  # Caso também queira rodar em push, descomente abaixo:
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   build:
@@ -29,11 +33,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # Se for publicar a imagem em um registry, descomente e configure:
+      # - name: Login to DockerHub
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and Push image
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: false          # coloque true se quiser enviar a imagem para um registry
+          push: false          # altere para true se quiser enviar a imagem para um registry
           tags: user/app:latest
 
   discord:
@@ -46,8 +57,3 @@ jobs:
         uses: Sniddl/discord-commits@v1.6
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-  #on:
-   # pull_request:
-    #  branches: [ main ]
-    #push:
-     # branches: [ main ]
