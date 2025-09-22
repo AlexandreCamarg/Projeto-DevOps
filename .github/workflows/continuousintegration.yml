@@ -85,4 +85,5 @@ jobs:
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           # Pode adicionar mais opções, dependendo da action: título, cor, etc.
+          
 
