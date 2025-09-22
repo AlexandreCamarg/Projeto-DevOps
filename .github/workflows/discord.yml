@@ -1,0 +1,15 @@
+name: Discord        # Nome do workflow que aparece na aba Actions
+on:
+  - push            # Dispara o workflow quando acontece um push
+
+jobs:
+  discord:          # Nome do job
+    runs-on: ubuntu-latest   # Runner: máquina virtual Ubuntu
+    steps:
+      - uses: actions/checkout@v4  # Faz checkout do código
+      - name: Run Discord Webhook  # Passo para enviar a mensagem
+        uses: Sniddl/discord-commits@v1.6
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }} # URL do webhook guardada em secrets
+          template: "avatar-with-link"            # Layout da mensagem
+          include-extras: true                    # Inclui informações extras (committer, etc.)
