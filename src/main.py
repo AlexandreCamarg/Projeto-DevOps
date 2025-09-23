@@ -34,3 +34,5 @@ def update_estudante(id_estudante: int):
 @app.delete("/estudante/{id_estudante}")
 def delete_estudante(id_estudante: int):
     return {"deleted": id_estudante > 0}
+
+
