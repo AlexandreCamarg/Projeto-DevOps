@@ -55,3 +55,4 @@ def test_delete_estudante_positivo():
     result = delete_estudante(10) == {"deleted": True}
     yield result
     assert result
+    
