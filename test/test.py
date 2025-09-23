@@ -43,5 +43,4 @@ async def test_delete_estudante_negativo():
 async def test_delete_estudante_positivo():
     result = await delete_estudante(10) == {"deleted": True}
     assert result
-
-
+    
