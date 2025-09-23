@@ -1,15 +1,6 @@
 """Testes unitários para o módulo main da API."""
 
 from unittest.mock import patch
-from src.main import (
-    root,
-    funcaoteste,
-    Estudante,
-    create_estudante,
-    update_estudante,
-    delete_estudante,
-)
-
 
 def test_root():
     result = root()
@@ -55,4 +46,5 @@ def test_delete_estudante_positivo():
     result = delete_estudante(10) == {"deleted": True}
     yield result
     assert result
-    
+
+
