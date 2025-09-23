@@ -1,0 +1,20 @@
+name: Discord Notification
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  discord:
+    name: Send Discord Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Send Discord Webhook
+        uses: Sniddl/discord-commits@v1.6
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}  # chave correta
+          template: "avatar-with-link"
+          include-extras: true
