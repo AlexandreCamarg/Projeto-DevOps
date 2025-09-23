@@ -1,4 +1,3 @@
-# test/test.py
 """Testes unitários para o módulo main da API."""
 
 from unittest.mock import patch
@@ -12,7 +11,10 @@ def test_funcaoteste():
     """Testa função de teste com número aleatório fixo."""
     with patch("random.randint", return_value=12345):
         result = funcaoteste()
-    assert result == {"teste": True, "num_aleatorio": 12345}
+    assert result == {
+        "teste": True,
+        "num_aleatorio": 12345
+    }
 
 def test_create_estudante():
     """Testa a criação de estudante."""

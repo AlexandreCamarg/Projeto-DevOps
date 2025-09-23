@@ -1,9 +1,8 @@
-# src/main.py
 """Módulo principal da API FastAPI com rotas de estudante."""
 
+import random
 from fastapi import FastAPI
 from pydantic import BaseModel
-import random
 
 app = FastAPI()
 
